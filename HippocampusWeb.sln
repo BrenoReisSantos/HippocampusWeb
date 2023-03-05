@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83F151EF-61E1-4BC2-8D9F-E47522E907C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HippocampusWeb", "src\HippocampusWeb\HippocampusWeb.csproj", "{9FEC75A9-2B91-4A43-83B9-020A544C33CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F20D102-02D3-4949-90E3-B41B5B8F9ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F20D102-02D3-4949-90E3-B41B5B8F9ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F20D102-02D3-4949-90E3-B41B5B8F9ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F20D102-02D3-4949-90E3-B41B5B8F9ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FEC75A9-2B91-4A43-83B9-020A544C33CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FEC75A9-2B91-4A43-83B9-020A544C33CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FEC75A9-2B91-4A43-83B9-020A544C33CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FEC75A9-2B91-4A43-83B9-020A544C33CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B8A1AA4-2B06-46CA-9E58-5CD62D1F0E34}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9FEC75A9-2B91-4A43-83B9-020A544C33CC} = {83F151EF-61E1-4BC2-8D9F-E47522E907C5}
+	EndGlobalSection
+EndGlobal

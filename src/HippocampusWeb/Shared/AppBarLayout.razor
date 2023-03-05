@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<MudLayout>
+    <MudAppBar Elevation="0" Dense="true" Color="Color.Info">
+        <MudGrid Class="align-center">
+            <MudItem>
+                <MudText Typo="Typo.h6">Hippocampus</MudText>
+            </MudItem>
+            <MudItem>
+                <MudButton Style="@($"color: white;")" Variant="Variant.Text" StartIcon="@Icons.Filled.RemoveRedEye">Monitores</MudButton>
+            </MudItem>
+            <MudItem>
+                <MudButton Style="@($"color: white;")" Variant="Variant.Text" StartIcon="@Icons.Filled.History">Histórico</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudAppBar>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
