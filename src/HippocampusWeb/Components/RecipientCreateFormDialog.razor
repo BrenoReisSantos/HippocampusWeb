@@ -1,0 +1,69 @@
+@using System.Text.Json
+
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h5">
+            Criação de Recipiente
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudTextField @bind-Value="_form.Name" Variant="Variant.Outlined" Label="Nome"/>
+        <MudTextField @bind-Value="_form.MacAddress" Variant="Variant.Outlined" Label="Endereço MAC"/>
+
+        <MudSelect T="RecipientType" @bind-Value="_form.TypeOfRecipient" Label="Tipo do Recipient do Monitor" Variant="Variant.Outlined">
+            @foreach (var recipientType in Enum.GetValues<RecipientType>())
+            {
+                <MudSelectItem Value="recipientType"/>
+            }
+        </MudSelect>
+    </DialogContent>
+    <DialogActions>
+        <MudButton
+            Disabled="_processingForm"
+            EndIcon="@Icons.Material.Filled.Check"
+            Color="Color.Success"
+            Variant="Variant.Filled"
+            @onclick="CreateRecipient">
+            @if (_processingForm)
+            {
+                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true"/>
+                <MudText Class="ms-2">Enviando...</MudText>
+            }
+            else
+            {
+                <MudText>Click me</MudText>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+
+    [CascadingParameter]
+    MudDialogInstance MudDialog { get; set; }
+
+    readonly RecipientCreationForm _form = new();
+
+    private bool _processingForm = false;
+
+    private class RecipientCreationForm
+    {
+        public string Name { get; set; } = string.Empty;
+        public string MacAddress { get; set; } = string.Empty;
+        public RecipientType TypeOfRecipient { get; set; }
+    }
+
+    public enum RecipientType : byte
+    {
+        Caixa,
+        Cisterna
+    }
+
+    async Task CreateRecipient()
+    {
+        _processingForm = true;
+        Console.WriteLine(JsonSerializer.Serialize(_form));
+        MudDialog.Close();
+    }
+
+}

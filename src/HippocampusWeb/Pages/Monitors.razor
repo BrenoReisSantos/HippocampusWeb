@@ -1,0 +1,81 @@
+﻿@page "/Monitors"
+@using HippocampusWeb.Components
+@inject IDialogService DialogService
+
+<MudTable T="MonitorInfo" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
+    <ToolBarContent>
+        <MudIconButton OnClick="OpenRecipientCreateDialog" Icon="@Icons.Filled.Add" Color="Color.Success" Variant="Variant.Filled" Class="rounded-circle"></MudIconButton>
+        <MudSpacer/>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh Style="text-align:center">Nível</MudTh>
+        <MudTh Style="text-align:center">Estado</MudTh>
+        <MudTh Style="text-align:center">Bomba Ligada</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nome">@context.Name</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Nível">@context.Level%</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Estado">
+            @switch (context.State)
+            {
+                case State.Cheio:
+                    <FullRecipientIcon/>
+                    break;
+                case State.Mediano:
+                    <AverageRecipientIcon/>
+                    break;
+                case State.Vazio:
+                    <EmptyRecipientIcon/>
+                    break;
+            }
+        </MudTd>
+        <MudTd Style="text-align:center" DataLabel="Bomba Ligada">
+            @if (context.IsPumpOn)
+            {
+                <PumpOnIcon/>
+            }
+            else
+            {
+                <PumpOffIcon/>
+            }
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+
+    public record MonitorInfo(string Name, int Level, State State, bool IsPumpOn);
+
+    public enum State : byte
+    {
+        Cheio,
+        Mediano,
+        Vazio,
+    }
+
+    void OpenRecipientCreateDialog() => DialogService.Show<RecipientCreateFormDialog>();
+
+    private IEnumerable<MonitorInfo> _testTableData = Enumerable.Empty<MonitorInfo>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _testTableData = new List<MonitorInfo>()
+        {
+            new MonitorInfo("teste1", 100, State.Cheio, true),
+            new MonitorInfo("teste2", 50, State.Mediano, false),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new MonitorInfo("teste1", 100, State.Cheio, false),
+            new MonitorInfo("teste2", 50, State.Mediano, false),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new MonitorInfo("teste2", 50, State.Mediano, false),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new MonitorInfo("teste2", 50, State.Mediano, false),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new MonitorInfo("teste3", 5, State.Vazio, true),
+        };
+    }
+
+}

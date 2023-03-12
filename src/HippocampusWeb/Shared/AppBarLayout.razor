@@ -1,26 +1,25 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
 
 <MudThemeProvider/>
-<MudDialogProvider/>
+<MudDialogProvider MaxWidth="MaxWidth.ExtraLarge"/>
 <MudSnackbarProvider/>
 
 <MudLayout>
     <MudAppBar Elevation="0" Dense="true" Color="Color.Info">
-        <MudGrid Class="align-center">
-            <MudItem>
-                <MudText Typo="Typo.h6">Hippocampus</MudText>
-            </MudItem>
-            <MudItem>
-                <MudButton Style="@($"color: white;")" Variant="Variant.Text" StartIcon="@Icons.Filled.RemoveRedEye">Monitores</MudButton>
-            </MudItem>
-            <MudItem>
-                <MudButton Style="@($"color: white;")" Variant="Variant.Text" StartIcon="@Icons.Filled.History">Histórico</MudButton>
-            </MudItem>
-        </MudGrid>
+        <MudText Typo="Typo.h6" Class="mr-4">Hippocampus</MudText>
+        <MudIconButton Style="@($"color: white;")" Icon="@Icons.Filled.RemoveRedEye" @onclick="NavigateToMonitorsPage">Monitores</MudIconButton>
+        <MudIconButton Style="@($"color: white;")" Icon="@Icons.Filled.History" @onclick="NavigateToHitoryLogPage">Histórico</MudIconButton>
     </MudAppBar>
     <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Large" Class="my-16 pt-16">
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
             @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
+
+@code
+{
+    private void NavigateToMonitorsPage() => NavigationManager.NavigateTo("Monitors");
+    private void NavigateToHitoryLogPage() => NavigationManager.NavigateTo("History");
+}

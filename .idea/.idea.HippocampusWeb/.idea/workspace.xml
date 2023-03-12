@@ -6,37 +6,75 @@
     <projectFile profileName="Mudblazor.Watch">src/HippocampusWeb/HippocampusWeb.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db4eb843-d019-4a1a-bb7f-f8d77c500b81" name="Changes" comment="" />
+    <list default="true" id="db4eb843-d019-4a1a-bb7f-f8d77c500b81" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/AverageRecipientIcon.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/EmptyRecipientIcon.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/FullRecipientIcon.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/PumpOffIcon.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/PumpOnIcon.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/RecipientCreateFormDialog.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Counter.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/FetchData.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Index.razor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/MonitorsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Monitors.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Shared/AppBarLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Shared/AppBarLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/wwwroot/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/134a6267445f46b7a8730761c018e904811000/1d/5f134456/MudTableBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/58f01ef94b1274f3aa342db815cc6395db8b3d35dbf69cd52bb2c3efa5cb98/NavigationManager.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectId" id="2Ma9EuKsIYxWpa0gXhpFL0OqVjO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.environmentSetup",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.environmentSetup&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\breno\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\breno\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.HippocampusWeb: Mudblazor.Template (1)">
     <configuration name="HippocampusWeb" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -130,15 +168,39 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1677994717316</updated>
-      <workItem from="1677994718946" duration="4649000" />
+      <workItem from="1677994718946" duration="4908000" />
+      <workItem from="1678044348343" duration="13848000" />
+      <workItem from="1678153107912" duration="2691000" />
     </task>
+    <task id="LOCAL-00001" summary="Init">
+      <created>1677999542357</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677999542357</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Init" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init" />
   </component>
 </project>
