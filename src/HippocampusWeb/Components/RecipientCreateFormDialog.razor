@@ -2,11 +2,14 @@
 
 <MudDialog>
     <TitleContent>
-        <MudText Typo="Typo.h5">
-            Criação de Recipiente
+        <MudText Typo="Typo.h4">
+            Criação de um Monitor
         </MudText>
     </TitleContent>
     <DialogContent>
+        <MudText Typo="Typo.h6">
+            Características do Monitor
+        </MudText>
         <MudTextField @bind-Value="_form.Name" Variant="Variant.Outlined" Label="Nome"/>
         <MudTextField @bind-Value="_form.MacAddress" Variant="Variant.Outlined" Label="Endereço MAC"/>
 
@@ -16,6 +19,14 @@
                 <MudSelectItem Value="recipientType"/>
             }
         </MudSelect>
+
+        <MudDivider DividerType="DividerType.Middle" Class="my-2"/>
+        
+        <MudText Typo="Typo.h6">
+            Configurações do WiFi do Monitor
+        </MudText>
+        <MudTextField @bind-Value="_form.WifiSsid" Variant="Variant.Outlined" Label="SSID" />
+        <MudTextField @bind-Value="_form.WifiPassword" InputType="InputType.Password" Variant="Variant.Outlined" Label="Password" />
     </DialogContent>
     <DialogActions>
         <MudButton
@@ -51,6 +62,8 @@
         public string Name { get; set; } = string.Empty;
         public string MacAddress { get; set; } = string.Empty;
         public RecipientType TypeOfRecipient { get; set; }
+        public string WifiSsid { get; set; } = string.Empty;
+        public string WifiPassword { get; set; } = string.Empty;
     }
 
     public enum RecipientType : byte
