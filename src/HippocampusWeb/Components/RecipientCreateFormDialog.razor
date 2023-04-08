@@ -1,5 +1,8 @@
+@using HippocampusWeb.Data
+@using HippocampusWeb.Values.Forms
+@using HippocampusWeb.Values
 @using System.Text.Json
-
+@inject IHippocampusApiClient client
 <MudDialog>
     <TitleContent>
         <MudText Typo="Typo.h4">
@@ -12,21 +15,23 @@
         </MudText>
         <MudTextField @bind-Value="_form.Name" Variant="Variant.Outlined" Label="Nome"/>
         <MudTextField @bind-Value="_form.MacAddress" Variant="Variant.Outlined" Label="Endereço MAC"/>
-
-        <MudSelect T="RecipientType" @bind-Value="_form.TypeOfRecipient" Label="Tipo do Recipient do Monitor" Variant="Variant.Outlined">
+        <MudSelect T="RecipientType" @bind-Value="_form.RecipientType" Label="Tipo do Recipient do Monitor" Variant="Variant.Outlined">
             @foreach (var recipientType in Enum.GetValues<RecipientType>())
             {
                 <MudSelectItem Value="recipientType"/>
             }
         </MudSelect>
-
-        <MudDivider DividerType="DividerType.Middle" Class="my-2"/>
-        
-        <MudText Typo="Typo.h6">
-            Configurações do WiFi do Monitor
-        </MudText>
-        <MudTextField @bind-Value="_form.WifiSsid" Variant="Variant.Outlined" Label="SSID" />
-        <MudTextField @bind-Value="_form.WifiPassword" InputType="InputType.Password" Variant="Variant.Outlined" Label="Password" />
+        <MudTextField
+            @bind-Value="_form.MinHeight"
+            InputType="InputType.Number"
+            Variant="Variant.Outlined"
+            Label="Altura Mínima (cm)"/>
+        <MudTextField
+            @bind-Value="_form.MaxHeight"
+            InputType="InputType.Number"
+            Variant="Variant.Outlined"
+            Label="Altura Máxima (cm)"/>
+        <MudTextField @bind-Value="_form.RecipientMonitorLinkedToMacAddress" Variant="Variant.Outlined" Label="Macaddress do Monitor Conectado"/>
     </DialogContent>
     <DialogActions>
         <MudButton
@@ -42,7 +47,7 @@
             }
             else
             {
-                <MudText>Click me</MudText>
+                <MudText>Criar</MudText>
             }
         </MudButton>
     </DialogActions>
@@ -53,29 +58,16 @@
     [CascadingParameter]
     MudDialogInstance MudDialog { get; set; }
 
-    readonly RecipientCreationForm _form = new();
+    readonly RecipientMonitorCreationForm _form = new();
 
     private bool _processingForm = false;
-
-    private class RecipientCreationForm
-    {
-        public string Name { get; set; } = string.Empty;
-        public string MacAddress { get; set; } = string.Empty;
-        public RecipientType TypeOfRecipient { get; set; }
-        public string WifiSsid { get; set; } = string.Empty;
-        public string WifiPassword { get; set; } = string.Empty;
-    }
-
-    public enum RecipientType : byte
-    {
-        Caixa,
-        Cisterna
-    }
 
     async Task CreateRecipient()
     {
         _processingForm = true;
-        Console.WriteLine(JsonSerializer.Serialize(_form));
+        var response = await client.PostRecipientMonitorAsync(_form);
+        _processingForm = false;
+        Console.WriteLine(JsonSerializer.Serialize(response));
         MudDialog.Close();
     }
 

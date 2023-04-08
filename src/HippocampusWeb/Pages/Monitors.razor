@@ -1,32 +1,35 @@
 ﻿@page "/Monitors"
 @using HippocampusWeb.Components
+@using HippocampusWeb.Values
 @inject IDialogService DialogService
 
-<MudTable T="MonitorInfo" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
+<MudTable T="MonitorsTableRow" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
     <ToolBarContent>
         <MudIconButton OnClick="OpenRecipientCreateDialog" Icon="@Icons.Filled.Add" Color="Color.Success" Variant="Variant.Filled" Class="rounded-circle"></MudIconButton>
         <MudSpacer/>
     </ToolBarContent>
     <HeaderContent>
         <MudTh>Nome</MudTh>
+        <MudTh Style="text-align:left">Tipo</MudTh>
         <MudTh Style="text-align:center">Nível</MudTh>
         <MudTh Style="text-align:center">Estado</MudTh>
         <MudTh Style="text-align:center">Bomba Ligada</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Nome">@context.Name</MudTd>
+        <MudTd Style="text-align:left" DataLabel="Tipo">@context.RecipientType</MudTd>
         <MudTd Style="text-align:center" DataLabel="Nível">@context.Level%</MudTd>
         <MudTd Style="text-align:center" DataLabel="Estado">
-            @switch (context.State)
+            @switch (context.RecipientState)
             {
-                case State.Cheio:
-                    <FullRecipientIcon/>
+                case RecipientState.Cheio:
+                    <FullRecipientBar/>
                     break;
-                case State.Mediano:
-                    <AverageRecipientIcon/>
+                case RecipientState.Mediano:
+                    <AverageRecipientBar/>
                     break;
-                case State.Vazio:
-                    <EmptyRecipientIcon/>
+                case RecipientState.Vazio:
+                    <EmptyRecipientBar/>
                     break;
             }
         </MudTd>
@@ -45,36 +48,19 @@
 
 @code {
 
-    public record MonitorInfo(string Name, int Level, State State, bool IsPumpOn);
-
-    public enum State : byte
-    {
-        Cheio,
-        Mediano,
-        Vazio,
-    }
 
     void OpenRecipientCreateDialog() => DialogService.Show<RecipientCreateFormDialog>();
 
-    private IEnumerable<MonitorInfo> _testTableData = Enumerable.Empty<MonitorInfo>();
+    private IEnumerable<MonitorsTableRow> _testTableData = Enumerable.Empty<MonitorsTableRow>();
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        _testTableData = new List<MonitorInfo>()
+        _testTableData = new List<MonitorsTableRow>()
         {
-            new MonitorInfo("teste1", 100, State.Cheio, true),
-            new MonitorInfo("teste2", 50, State.Mediano, false),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
-            new MonitorInfo("teste1", 100, State.Cheio, false),
-            new MonitorInfo("teste2", 50, State.Mediano, false),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
-            new MonitorInfo("teste2", 50, State.Mediano, false),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
-            new MonitorInfo("teste2", 50, State.Mediano, false),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
-            new MonitorInfo("teste3", 5, State.Vazio, true),
+            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Cheio, RecipientType = RecipientType.Caixa, Level = 100, IsPumpOn = false, Name = "Recipiente 1" },
+            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Mediano, RecipientType = RecipientType.Cisterna, Level = 50, IsPumpOn = true, Name = "Recipiente 2" },
+            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Vazio, RecipientType = RecipientType.Cisterna, Level = 10, IsPumpOn = false, Name = "Recipiente 3" }
         };
     }
 

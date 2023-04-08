@@ -5,24 +5,26 @@
     <projectFile profileName="Mudblazor.Template">HippocampusWeb.csproj</projectFile>
     <projectFile profileName="Mudblazor.Watch">src/HippocampusWeb/HippocampusWeb.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="db4eb843-d019-4a1a-bb7f-f8d77c500b81" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/AverageRecipientIcon.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/EmptyRecipientIcon.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/FullRecipientIcon.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/PumpOffIcon.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/PumpOnIcon.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/RecipientCreateFormDialog.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Data/HippocampuApiClient.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Data/RecipientMonitorApiRoutes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Diplomat/HttpIn/RecipientMonitorCreatedDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Values/Forms/RecipientMonitorCreationForm.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Values/MonitorsTableRow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Values/RecipientBoundary.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Values/RecipientState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/HippocampusWeb/Values/RecipientType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HippocampusWeb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Counter.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/FetchData.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Index.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/MonitorsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Monitors.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Shared/AppBarLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Shared/AppBarLayout.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Components/AverageRecipientIcon.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/AverageRecipientBar.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Components/EmptyRecipientIcon.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/EmptyRecipientBar.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Components/FullRecipientIcon.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/FullRecipientBar.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Components/RecipientCreateFormDialog.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Components/RecipientCreateFormDialog.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Monitors.razor" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Pages/Monitors.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HippocampusWeb/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/HippocampusWeb/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +32,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -56,25 +59,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.environmentSetup&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.environmentSetup",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\breno\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\breno\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\breno\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.HippocampusWeb: Mudblazor.Template (1)">
     <configuration name="HippocampusWeb" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -171,6 +180,12 @@
       <workItem from="1677994718946" duration="4908000" />
       <workItem from="1678044348343" duration="13848000" />
       <workItem from="1678153107912" duration="2691000" />
+      <workItem from="1678654755007" duration="961000" />
+      <workItem from="1679160751197" duration="5479000" />
+      <workItem from="1679778626533" duration="5542000" />
+      <workItem from="1679867041368" duration="5593000" />
+      <workItem from="1680662731009" duration="386000" />
+      <workItem from="1680898206349" duration="8579000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1677999542357</created>
@@ -179,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677999542357</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: tela de cadastro de recipiente">
+      <created>1678654823941</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678654823941</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +223,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="feat: tela de cadastro de recipiente" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: tela de cadastro de recipiente" />
   </component>
 </project>
