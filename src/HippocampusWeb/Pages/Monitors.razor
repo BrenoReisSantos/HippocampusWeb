@@ -1,67 +1,29 @@
 ﻿@page "/Monitors"
 @using HippocampusWeb.Components
-@using HippocampusWeb.Values
 @inject IDialogService DialogService
 
-<MudTable T="MonitorsTableRow" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
-    <ToolBarContent>
-        <MudIconButton OnClick="OpenRecipientCreateDialog" Icon="@Icons.Filled.Add" Color="Color.Success" Variant="Variant.Filled" Class="rounded-circle"></MudIconButton>
-        <MudSpacer/>
-    </ToolBarContent>
-    <HeaderContent>
-        <MudTh>Nome</MudTh>
-        <MudTh Style="text-align:left">Tipo</MudTh>
-        <MudTh Style="text-align:center">Nível</MudTh>
-        <MudTh Style="text-align:center">Estado</MudTh>
-        <MudTh Style="text-align:center">Bomba Ligada</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Nome">@context.Name</MudTd>
-        <MudTd Style="text-align:left" DataLabel="Tipo">@context.RecipientType</MudTd>
-        <MudTd Style="text-align:center" DataLabel="Nível">@context.Level%</MudTd>
-        <MudTd Style="text-align:center" DataLabel="Estado">
-            @switch (context.RecipientState)
-            {
-                case RecipientState.Cheio:
-                    <FullRecipientBar/>
-                    break;
-                case RecipientState.Mediano:
-                    <AverageRecipientBar/>
-                    break;
-                case RecipientState.Vazio:
-                    <EmptyRecipientBar/>
-                    break;
-            }
-        </MudTd>
-        <MudTd Style="text-align:center" DataLabel="Bomba Ligada">
-            @if (context.IsPumpOn)
-            {
-                <PumpOnIcon/>
-            }
-            else
-            {
-                <PumpOffIcon/>
-            }
-        </MudTd>
-    </RowTemplate>
-</MudTable>
+
+<MudIconButton
+    OnClick="OpenRecipientCreateDialog"
+    Icon="@Icons.Filled.Add"
+    Color="Color.Primary"
+    Variant="Variant.Filled"
+    Class="rounded-circle">
+</MudIconButton>
+<MudSpacer/>
+<RecipientMonitorsTable @ref="RecipientMonitorsTableRef"/>
 
 @code {
+    private RecipientMonitorsTable? RecipientMonitorsTableRef { get; set; }
 
-
-    void OpenRecipientCreateDialog() => DialogService.Show<RecipientCreateFormDialog>();
-
-    private IEnumerable<MonitorsTableRow> _testTableData = Enumerable.Empty<MonitorsTableRow>();
-
-    protected override void OnInitialized()
+    async Task OpenRecipientCreateDialog()
     {
-        base.OnInitialized();
-        _testTableData = new List<MonitorsTableRow>()
-        {
-            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Cheio, RecipientType = RecipientType.Caixa, Level = 100, IsPumpOn = false, Name = "Recipiente 1" },
-            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Mediano, RecipientType = RecipientType.Cisterna, Level = 50, IsPumpOn = true, Name = "Recipiente 2" },
-            new() { Id = Guid.NewGuid(), RecipientState = RecipientState.Vazio, RecipientType = RecipientType.Cisterna, Level = 10, IsPumpOn = false, Name = "Recipiente 3" }
-        };
+        var dialog = DialogService.Show<RecipientCreateFormDialog>();
+
+        var dialogResult = await dialog.Result;
+
+        if (!dialogResult.Cancelled)
+            RecipientMonitorsTableRef?.UpdateTable();
     }
 
 }

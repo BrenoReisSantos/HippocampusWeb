@@ -1,8 +1,8 @@
-@using HippocampusWeb.Data
 @using HippocampusWeb.Values.Forms
+@using HippocampusWeb.Data
 @using HippocampusWeb.Values
-@using System.Text.Json
-@inject IHippocampusApiClient client
+@inject IHippocampusApiClient ApiClient
+
 <MudDialog>
     <TitleContent>
         <MudText Typo="Typo.h4">
@@ -56,7 +56,7 @@
 @code {
 
     [CascadingParameter]
-    MudDialogInstance MudDialog { get; set; }
+    MudDialogInstance? MudDialog { get; set; }
 
     readonly RecipientMonitorCreationForm _form = new();
 
@@ -65,10 +65,10 @@
     async Task CreateRecipient()
     {
         _processingForm = true;
-        var response = await client.PostRecipientMonitorAsync(_form);
+        var response = await ApiClient.PostRecipientMonitorAsync(_form);
+        var isSuccess = response is not null ? true : false;
         _processingForm = false;
-        Console.WriteLine(JsonSerializer.Serialize(response));
-        MudDialog.Close();
+        MudDialog?.Close(DialogResult.Ok(isSuccess));
     }
 
 }

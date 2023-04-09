@@ -1,0 +1,70 @@
+@using HippocampusWeb.Values
+@using HippocampusWeb.Data
+@inject IHippocampusApiClient ApiClient
+
+<MudTable Loading="_tableDataLoading" T="MonitorsTableRow" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh Style="text-align:left">Tipo</MudTh>
+        <MudTh Style="text-align:center">Nível</MudTh>
+        <MudTh Style="text-align:center">Endereço MAC</MudTh>
+        <MudTh Style="text-align:center">Altura Mínima (cm)</MudTh>
+        <MudTh Style="text-align:center">Altura Máxima (cm)</MudTh>
+        <MudTh Style="text-align:center">Estado</MudTh>
+        <MudTh Style="text-align:center">Bomba Ligada</MudTh>
+        <MudTh Style="text-align:center">Endereço MAC do Monitor Conectado</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Nome">@context.Name</MudTd>
+        <MudTd Style="text-align:left" DataLabel="Tipo">@context.RecipientType</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Nível">@context.Level%</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Endereço MAC">@context.MacAddress</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Altura Mínima">@context.MinHeight</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Altura Mínima">@context.MaxHeight</MudTd>
+        <MudTd Style="text-align:center" DataLabel="Estado">
+            @switch (context.RecipientState)
+            {
+                case RecipientState.Cheio:
+                    <FullRecipientBar/>
+                    break;
+                case RecipientState.Mediano:
+                    <AverageRecipientBar/>
+                    break;
+                case RecipientState.Vazio:
+                    <EmptyRecipientBar/>
+                    break;
+            }
+        </MudTd>
+        <MudTd Style="text-align:center" DataLabel="Bomba Ligada">
+            @if (context.IsPumpOn)
+            {
+                <PumpOnIcon/>
+            }
+            else
+            {
+                <PumpOffIcon/>
+            }
+        </MudTd>
+        <MudTd Style="text-align:center" DataLabel="Endereço MAC do Monitor Conectado">@context.LinkedRecipientMonitorMacAddress</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private bool _tableDataLoading = false;
+    private IEnumerable<MonitorsTableRow>? _testTableData = Enumerable.Empty<MonitorsTableRow>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await UpdateTable();
+    }
+
+    public async Task UpdateTable()
+    {
+        _tableDataLoading = true;
+        _testTableData = await ApiClient.GetMonitorsForTable();
+        _tableDataLoading = false;
+        StateHasChanged();
+    }
+
+}
