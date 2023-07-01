@@ -1,8 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace HippocampusWeb.Values;
 
-public enum RecipientState : byte
+[JsonConverter(typeof(JsonStringEnumConverter))]
+public enum RecipientState
 {
-    Cheio,
-    Mediano,
-    Vazio,
+    Empty,
+    Average,
+    Full
 }
