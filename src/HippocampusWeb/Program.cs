@@ -9,7 +9,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddTransient<IHippocampusApiClient>(sp => new HippocampuApiClient("http://localhost:5041/api/"));
+builder.Services.AddTransient<IHippocampusApiClient>(sp => new HippocampuApiClient("http://localhost:5000/api/"));
 builder.Services.AddMudServices();
 
 await builder.Build().RunAsync();
