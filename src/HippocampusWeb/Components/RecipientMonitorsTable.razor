@@ -1,8 +1,9 @@
 @using HippocampusWeb.Values
 @using HippocampusWeb.Data
 @inject IHippocampusApiClient ApiClient
+@inject IDialogService DialogService
 
-<MudTable Loading="_tableDataLoading" T="MonitorsTableRow" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
+<MudTable OnRowClick="OpenUpdateMonitorDialog" Loading="_tableDataLoading" T="MonitorsTableRow" Height="500px" Elevation="0" Outlined="false" Items="_testTableData" Hover="true">
     <HeaderContent>
         <MudTh>Nome</MudTh>
         <MudTh Style="text-align:left">Tipo</MudTh>
@@ -39,8 +40,8 @@
 </MudTable>
 
 @code {
-    private bool _tableDataLoading = false;
-    private IEnumerable<MonitorsTableRow> _testTableData = Enumerable.Empty<MonitorsTableRow>();
+    bool _tableDataLoading = false;
+    IEnumerable<MonitorsTableRow> _testTableData = Enumerable.Empty<MonitorsTableRow>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,6 +55,19 @@
         _testTableData = await ApiClient.GetMonitorsForTable() ?? Enumerable.Empty<MonitorsTableRow>();
         _tableDataLoading = false;
         StateHasChanged();
+    }
+
+    async Task OpenUpdateMonitorDialog(TableRowClickEventArgs<MonitorsTableRow> rowClickEventArgs)
+    {
+        var clickedRow = rowClickEventArgs.Item;
+        var dialogArguments = new DialogParameters { { "MonitorId", clickedRow.RecipientMonitorId } };
+
+        var dialog = DialogService.Show<MonitorUpdateDialog>("", dialogArguments);
+
+        var dialogResult = await dialog.Result;
+
+        if (!dialogResult.Cancelled)
+            await UpdateTable();
     }
 
 }

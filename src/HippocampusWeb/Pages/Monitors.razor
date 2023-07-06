@@ -14,11 +14,11 @@
 <RecipientMonitorsTable @ref="RecipientMonitorsTableRef"/>
 
 @code {
-    private RecipientMonitorsTable? RecipientMonitorsTableRef { get; set; }
+    RecipientMonitorsTable? RecipientMonitorsTableRef { get; set; }
 
     async Task OpenRecipientCreateDialog()
     {
-        var dialog = DialogService.Show<RecipientCreateFormDialog>();
+        var dialog = DialogService.Show<MonitorCreationDialog>();
 
         var dialogResult = await dialog.Result;
 
